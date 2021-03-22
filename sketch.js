@@ -1,0 +1,47 @@
+
+var fixedRect, movingRect;
+var car, wall;
+
+function setup() {
+  createCanvas(1200,800);
+ 
+ 
+  movingRect = createSprite(800, 400,80,30);
+  movingRect.shapeColor = "green";
+
+  fixedRect = createSprite(100, 100, 50, 50);
+  fixedRect.shapeColor = "green";
+  
+  car = createSprite(900,300,100,50)
+car.shapeColor= "blue"
+}
+
+function draw() {
+  background(0,0,0);  
+  movingRect.x = World.mouseX;
+  movingRect.y = World.mouseY;
+
+  if(isTouching(movingRect,fixedRect)){
+    movingRect.shapeColor = "blue";
+    fixedRect.shapeColor = "blue";
+  }
+  else if (isTouching(movingRect,car)){
+    stroke("pink")
+    fill("pink")
+text("it has touched ",600,400)
+  }
+  else {
+    movingRect.shapeColor = "green";
+  
+    fixedRect.shapeColor = "green"
+    
+    car.shapeColor= "blue"
+  }
+ 
+
+//bounceOff(movingRect,fixedRect)
+  drawSprites();
+}
+
+
+
